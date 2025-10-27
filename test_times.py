@@ -51,3 +51,8 @@ def test_compute_overlap(time_range_1, time_range_2, expected):
 def test_invalid_time_range():
     with pytest.raises(ValueError):
         time_range("2022-01-01 12:00:00", "2022-01-01 10:00:00")
+
+
+pytestmark = pytest.mark.parametrize("n,expected", [(1, 2), (3, 4)])
+class TestClass:
+    
