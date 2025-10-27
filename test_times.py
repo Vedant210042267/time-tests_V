@@ -11,6 +11,21 @@ def test_given_input():
     expected = [('2010-01-12 10:30:00', '2010-01-12 10:37:00'), ('2010-01-12 10:38:00', '2010-01-12 10:45:00')]
 
     assert result == expected
+# no overlap case
+def test_no_overlap():
+    range1 = time_range("2021-01-01 12:00:00", "2021-01-01 13:00:00")
+    range2 = time_range("2021-01-01 14:00:00", "2021-01-01 15:00:00")
+
+    result = compute_overlap_time(range1, range2)
+
+    expected = []
+
+    assert result == expected
+
+# multiple intervals in both ranges
+def test_multiple_intervals():
+    range1 = time_range("2022-05-01 09:00:00", "2022-05-01 11:00:00", 3, 30)
+    range2 = time_range("2022-05-01 10:15:00", "2022-05-01 12:15:00", 4, 15)
 
 
 def test_no_overlap_ranges():
@@ -31,9 +46,15 @@ def test_multiple_intervals_each():
     ]
     assert result == expected
 
+
 def test_touching_endpoints():
     r1 = time_range("2010-01-12 10:00:00", "2010-01-12 10:30:00")
     r2 = time_range("2010-01-12 10:30:00", "2010-01-12 11:00:00")
     result = compute_overlap_time(r1, r2)
     assert result == []
+
+# two time ranges that end exactly at the same time when the other starts
+def test_edge_case_no_overlap():
+    range1 = time_range("2023-03-10 08:00:00", "2023-03-10 09:00:00")
+    range2 = time_range("2023-03-10 09:00:00", "2023-03-10 10:00:00")
 
