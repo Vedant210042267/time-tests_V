@@ -12,7 +12,7 @@ def test_given_input():
 
     assert result == expected
     
-    test = 
+
 
 
 # multiple intervals in both ranges
