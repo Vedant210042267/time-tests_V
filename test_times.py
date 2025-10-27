@@ -13,7 +13,7 @@ def test_given_input():
     assert result == expected
 
 # multiple intervals in both ranges
-def multiple_intervals():
+def test_multiple_intervals():
     range1 = time_range("2022-05-01 09:00:00", "2022-05-01 11:00:00", 3, 30)
     range2 = time_range("2022-05-01 10:15:00", "2022-05-01 12:15:00", 4, 15)
 
@@ -24,7 +24,7 @@ def multiple_intervals():
     assert result == expected
 
 # two time ranges that end exactly at the same time when the other starts
-def edge_case_no_overlap():
+def test_edge_case_no_overlap():
     range1 = time_range("2023-03-10 08:00:00", "2023-03-10 09:00:00")
     range2 = time_range("2023-03-10 09:00:00", "2023-03-10 10:00:00")
 
